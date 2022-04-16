@@ -85,13 +85,13 @@ class Jajargenjang extends BangunDatar {
       this.tinggi = 0});
 
   @override
-  String rumusKeliling() => 'AB x BC x CD x DE';
+  String rumusKeliling() => 'AB + BC + CD + DE';
 
   @override
   String rumusLuas() => 'alas * tinggi';
 
   @override
-  double hitungKeliling() => sisi1 * sisi2 * sisi3 * alas;
+  double hitungKeliling() => sisi1 + sisi2 + sisi3 + alas;
 
   @override
   double hitungLuas() => alas * tinggi;
@@ -108,13 +108,13 @@ class Trapesium extends BangunDatar {
       this.tinggi = 0});
 
   @override
-  String rumusKeliling() => 'AB x BC x CD x DE';
+  String rumusKeliling() => 'AB + BC + CD + DE';
 
   @override
   String rumusLuas() => '((atas + bawah) x tinggi) / 2';
 
   @override
-  double hitungKeliling() => sisi1 * sisi2 * atas * bawah;
+  double hitungKeliling() => sisi1 + sisi2 + atas + bawah;
 
   @override
   double hitungLuas() => ((atas + bawah) * tinggi) / 2;
@@ -126,13 +126,13 @@ class Segitiga extends BangunDatar {
   Segitiga({this.sisi1 = 0, this.sisi2 = 0, this.alas = 0, this.tinggi = 0});
 
   @override
-  String rumusKeliling() => 'AB x BC x CD';
+  String rumusKeliling() => 'AB + BC + CD';
 
   @override
   String rumusLuas() => '(alas x tinggi) / 2';
 
   @override
-  double hitungKeliling() => sisi1 * sisi2 * alas;
+  double hitungKeliling() => sisi1 + sisi2 + alas;
 
   @override
   double hitungLuas() => (alas * tinggi) / 2;

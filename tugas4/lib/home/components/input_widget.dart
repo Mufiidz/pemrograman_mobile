@@ -309,16 +309,16 @@ class _InputWidgetState extends State<InputWidget> {
       BangunDatar bangunDatar = BangunDatar();
       switch (selectedItem.toLowerCase()) {
         case 'lingkaran':
-          String jari = _formKey.currentState?.value['jari'];
+          String jari = _formKey.currentState?.value['jari'] ?? '0';
           bangunDatar = Lingkaran(jari: toInt(jari).toDouble());
           widget.bangunDatar(bangunDatar);
           break;
         case 'trapesium':
-          String sisi = _formKey.currentState?.value['sisi'];
-          String sisi2 = _formKey.currentState?.value['sisi2'];
-          String sisi3 = _formKey.currentState?.value['sisi3'];
-          String sisi4 = _formKey.currentState?.value['sisi4'];
-          String tinggi = _formKey.currentState?.value['tinggi'];
+          String sisi = _formKey.currentState?.value['sisi'] ?? '0';
+          String sisi2 = _formKey.currentState?.value['sisi2'] ?? '0';
+          String sisi3 = _formKey.currentState?.value['sisi3'] ?? '0';
+          String sisi4 = _formKey.currentState?.value['sisi4'] ?? '0';
+          String tinggi = _formKey.currentState?.value['tinggi'] ?? '0';
           bangunDatar = Trapesium(
               sisi1: toInt(sisi).toDouble(),
               sisi2: toInt(sisi2).toDouble(),
@@ -328,11 +328,11 @@ class _InputWidgetState extends State<InputWidget> {
           widget.bangunDatar(bangunDatar);
           break;
         case 'jajargenjang':
-          String sisi = _formKey.currentState?.value['sisi'];
-          String sisi2 = _formKey.currentState?.value['sisi2'];
-          String sisi3 = _formKey.currentState?.value['sisi3'];
-          String sisi4 = _formKey.currentState?.value['sisi4'];
-          String tinggi = _formKey.currentState?.value['tinggi'];
+          String sisi = _formKey.currentState?.value['sisi'] ?? '0';
+          String sisi2 = _formKey.currentState?.value['sisi2'] ?? '0';
+          String sisi3 = _formKey.currentState?.value['sisi3'] ?? '0';
+          String sisi4 = _formKey.currentState?.value['sisi4'] ?? '0';
+          String tinggi = _formKey.currentState?.value['tinggi'] ?? '0';
           bangunDatar = Jajargenjang(
               sisi1: toInt(sisi).toDouble(),
               sisi2: toInt(sisi2).toDouble(),
@@ -343,10 +343,10 @@ class _InputWidgetState extends State<InputWidget> {
           break;
 
         case 'segitiga':
-          String sisi = _formKey.currentState?.value['sisi'];
-          String sisi2 = _formKey.currentState?.value['sisi2'];
-          String sisi3 = _formKey.currentState?.value['sisi3'];
-          String tinggi = _formKey.currentState?.value['tinggi'];
+          String sisi = _formKey.currentState?.value['sisi'] ?? '0';
+          String sisi2 = _formKey.currentState?.value['sisi2'] ?? '0';
+          String sisi3 = _formKey.currentState?.value['sisi3'] ?? '0';
+          String tinggi = _formKey.currentState?.value['tinggi'] ?? '0';
           bangunDatar = Segitiga(
               sisi1: toInt(sisi).toDouble(),
               sisi2: toInt(sisi2).toDouble(),
@@ -355,10 +355,10 @@ class _InputWidgetState extends State<InputWidget> {
           widget.bangunDatar(bangunDatar);
           break;
         default:
-          String sisi = _formKey.currentState?.value['sisi'];
-          String sisi2 = _formKey.currentState?.value['sisi2'];
-          String diagonal1 = _formKey.currentState?.value['diagonal1'];
-          String diagonal2 = _formKey.currentState?.value['diagonal2'];
+          String sisi = _formKey.currentState?.value['sisi'] ?? '0';
+          String sisi2 = _formKey.currentState?.value['sisi2'] ?? '0';
+          String diagonal1 = _formKey.currentState?.value['diagonal1'] ?? '0';
+          String diagonal2 = _formKey.currentState?.value['diagonal2'] ?? '0';
           bangunDatar = BelahKetupat(
               sisi: toInt(sisi).toDouble(),
               sisi2: toInt(sisi2).toDouble(),
