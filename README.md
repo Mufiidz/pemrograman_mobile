@@ -7,3 +7,4 @@ Ini merupakan kumpulan jawaban - jawaban dari tugas Pemrogrman Mobile
 - [Tugas 2](/tugas2/)
 - [Tugas 4](/tugas4/)
 - [Tugas 6](/tugas6/)
+- [UTS](/uts/)
