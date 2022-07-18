@@ -7,6 +7,9 @@ Ini merupakan UAS Pemrograman Mobile soal **Genap**. Membuat CRUD data dosen.
 - [Flutter Form Builder](https://pub.dev/packages/flutter_form_builder)
 - [DIO](https://pub.dev/packages/dio)
 
+## Sumber Data yang digunakan
+- [LecturerDataAPI](https://github.com/Mufiidz/lecturer_data) 
+
 ## Source Code
 
 [All Source Code](./lib/)
@@ -15,10 +18,9 @@ Ini merupakan UAS Pemrograman Mobile soal **Genap**. Membuat CRUD data dosen.
 
 |                                              |                                              |
 | -------------------------------------------- | -------------------------------------------- |
-| ![Image Output1](<./screenshoots/ss(1).png>) | ![Image Output2](<./screenshoots/ss(2).png>) |
-| ![Image Output3](<./screenshoots/ss(3).png>) | ![Image Output4](<./screenshoots/ss(4).png>) |
-| ![Image Output3](<./screenshoots/ss(5).png>) | |
+| ![start](<./screenshoots/start.png>)         | ![create](<./screenshoots/add.png>)          |
+| HomeScreen                                   | Dosen Form                                   |
+| ![created dosen](<./screenshoots/added_dosen.png>) | ![update](<./screenshoots/updated_dosen.png>) |
+| Created Dosen                                | Update Dosen                                    |
+| ![delete](<./screenshoots/deleted_dosen.png>)|                                                 |
 
-
-## Download
-[Android](https://github.com/Mufiidz/pemrograman_mobile/releases/download/tugas6/SIGD.Bekasi.apk)
