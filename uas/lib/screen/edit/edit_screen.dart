@@ -1,10 +1,15 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:provider/provider.dart';
 import 'package:uas/model/dosen.dart';
+import 'package:uas/screen/dosen_viewmodel.dart';
 import 'package:uas/screen/edit/components/default_dropdown_widget.dart';
 import 'package:uas/screen/edit/components/default_textfield_widget.dart';
-import 'package:uas/screen/utils/context_ext.dart';
+import 'package:uas/utils/app_route.dart';
+import 'package:uas/utils/context_ext.dart';
 
 class EditScreen extends StatefulWidget {
   final Dosen? dosen;
@@ -43,19 +48,19 @@ class _EditScreenState extends State<EditScreen> {
                       DefaultTextFieldWdiget(
                         id: 'name',
                         labelText: 'Name',
-                        initialValue: widget.dosen?.name,
+                        initialValue: widget.dosen?.nama,
                       ),
                       DefaultDropdownWidget(
                         id: 'rumpun',
-                        items: const ['test1', 'test2'],
-                        labelText: 'Rumpun',
-                        initialValue: widget.dosen?.rumpun,
+                        items: _getListFakultas(),
+                        labelText: 'Fakultas',
+                        initialValue: widget.dosen?.fakultas,
                       ),
                       DefaultDropdownWidget(
                         id: 'progStud',
-                        items: const ['test3', 'test4'],
+                        items: _getListProdi(),
                         labelText: 'Program Studi',
-                        initialValue: widget.dosen?.programStudy,
+                        initialValue: widget.dosen?.prodi,
                       ),
                       DefaultTextFieldWdiget(
                         id: 'email',
@@ -74,7 +79,7 @@ class _EditScreenState extends State<EditScreen> {
                     width: size.width,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () => _onClick(),
+                      onPressed: () => _onClick(context),
                       style: ButtonStyle(
                           elevation: MaterialStateProperty.all(0),
                           shape:
@@ -94,27 +99,40 @@ class _EditScreenState extends State<EditScreen> {
     );
   }
 
-  _onClick() {
+  _onClick(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       final dosen = widget.dosen;
+      final rng = Random();
       var value = _formKey.currentState!.value;
       var name = value['name'];
       var rumpun = value['rumpun'];
       var programStudy = value['progStud'];
       var email = value['email'];
       var newDosen = Dosen(
-          id: 0,
-          dosenId: 'Dosen001',
-          name: name,
-          rumpun: rumpun,
-          programStudy: programStudy,
+          id: 7,
+          dosenid: 'Dosen00${rng.nextInt(100)}',
+          nama: name,
+          fakultas: rumpun,
+          prodi: programStudy,
           email: email);
 
       if (dosen != null) {
         newDosen.id = dosen.id;
-        newDosen.dosenId = dosen.dosenId;
+        newDosen.dosenid = dosen.dosenid;
       }
+
+      if (dosen == null) {
+        context.read<DosenViewModel>().addDosen(newDosen);
+      } else {
+        context.read<DosenViewModel>().updateDosen(newDosen);
+      }
+      context.snackbar.showSnackBar(const SnackBar(content: Text('Sukses')));
+      AppRoute.back();
     }
   }
+
+  _getListFakultas() => ["Ilmu Komputer", 'Ilmu Komunikasi', 'Ekonomi Bisnis'];
+
+  _getListProdi() => ["Teknik Informatika", 'Markom', 'Manajemen Bisnis'];
 }

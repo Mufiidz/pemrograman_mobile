@@ -1,54 +1,57 @@
-import 'dart:convert';
-
 class Dosen {
   int id;
-  String dosenId;
-  String name;
-  String rumpun;
-  String programStudy;
+  String dosenid;
+  String nama;
+  String fakultas;
+  String prodi;
   String email;
-
   Dosen({
     required this.id,
-    required this.dosenId,
-    required this.name,
-    required this.rumpun,
-    required this.programStudy,
+    required this.dosenid,
+    required this.nama,
+    required this.fakultas,
+    required this.prodi,
     required this.email,
   });
 
-  String setDosenId() => 'Dosen00$id';
-
-  Map<String, dynamic> toMap() {
-    final result = <String, dynamic>{};
-
-    result.addAll({'id': id});
-    result.addAll({'dosenId': dosenId});
-    result.addAll({'name': name});
-    result.addAll({'rumpun': rumpun});
-    result.addAll({'programStudy': programStudy});
-    result.addAll({'email': email});
-
-    return result;
-  }
-
-  factory Dosen.fromMap(Map<String, dynamic> map) {
+  Dosen copyWith({
+    int? id,
+    String? dosenid,
+    String? name,
+    String? fakultas,
+    String? prodi,
+    String? email,
+  }) {
     return Dosen(
-      id: map['id']?.toInt() ?? 0,
-      dosenId: map['dosenId'] ?? '',
-      name: map['name'] ?? '',
-      rumpun: map['rumpun'] ?? '',
-      programStudy: map['programStudy'] ?? '',
-      email: map['email'] ?? '',
+      id: id ?? this.id,
+      dosenid: dosenid ?? this.dosenid,
+      nama: name ?? nama,
+      fakultas: fakultas ?? this.fakultas,
+      prodi: prodi ?? this.prodi,
+      email: email ?? this.email,
     );
   }
 
-  String toJson() => json.encode(toMap());
+  factory Dosen.fromJson1(Map<String, dynamic> json) => Dosen(
+        id: json["id"],
+        dosenid: json["dosenid"],
+        nama: json["nama"],
+        fakultas: json["fakultas"],
+        prodi: json["prodi"],
+        email: json["email"],
+      );
 
-  factory Dosen.fromJson(String source) => Dosen.fromMap(json.decode(source));
+  Map<String, dynamic> toJson1() => {
+        "id": id,
+        "dosenid": dosenid,
+        "nama": nama,
+        "fakultas": fakultas,
+        "prodi": prodi,
+        "email": email,
+      };
 
   @override
   String toString() {
-    return 'Dosen(id: $id, dosenId: $dosenId, name: $name, rumpun: $rumpun, programStudy: $programStudy, email: $email)';
+    return 'Dosen(id: $id, dosenid: $dosenid, name: $nama, fakultas: $fakultas, prodi: $prodi, email: $email)';
   }
 }

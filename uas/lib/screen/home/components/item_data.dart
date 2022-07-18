@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uas/model/dosen.dart';
 import 'package:uas/screen/edit/edit_screen.dart';
-import 'package:uas/screen/utils/app_route.dart';
-import 'package:uas/screen/utils/context_ext.dart';
+import 'package:uas/utils/context_ext.dart';
+
+import '../../../utils/app_route.dart';
+import '../../dosen_viewmodel.dart';
 
 class ItemData extends StatelessWidget {
   final Dosen dosen;
-  final Function() onDismissed;
-  final Function() onCancel;
   const ItemData(
       {Key? key,
-      required this.dosen,
-      required this.onDismissed,
-      required this.onCancel})
+      required this.dosen,})
       : super(key: key);
 
   @override
@@ -21,15 +20,10 @@ class ItemData extends StatelessWidget {
       key: UniqueKey(),
       direction: DismissDirection.startToEnd,
       onDismissed: (direction) {
-        onDismissed;
+        context.read<DosenViewModel>().deleteDosen(dosen.id);
         context.snackbar.showSnackBar(SnackBar(
-          content: Text('Deleted ${dosen.name}'),
+          content: Text('Deleted ${dosen.nama}'),
           backgroundColor: Colors.redAccent,
-          action: SnackBarAction(
-            label: 'Cancel',
-            onPressed: () => onCancel,
-            textColor: Colors.white,
-          ),
         ));
       },
       child: Card(
@@ -50,20 +44,20 @@ class ItemData extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      dosen.dosenId,
+                      dosen.dosenid,
                       style: const TextStyle(color: Colors.grey),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: Text(
-                        dosen.name,
+                        dosen.nama,
                         textScaleFactor: 1,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
-                    Text(dosen.rumpun),
-                    Text(dosen.programStudy),
+                    Text(dosen.fakultas),
+                    Text(dosen.prodi),
                   ],
                 )),
                 Expanded(

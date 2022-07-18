@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:provider/provider.dart';
 import 'package:uas/model/dosen.dart';
 import 'package:uas/screen/edit/edit_screen.dart';
 import 'package:uas/screen/home/components/item_data.dart';
-import 'package:uas/screen/utils/app_route.dart';
+
+import '../../data/remote/viewstate.dart';
+import '../../utils/app_route.dart';
+import '../dosen_viewmodel.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,6 +18,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _showFab = true;
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<DosenViewModel>().getAllDosen();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,20 +48,22 @@ class _HomeScreenState extends State<HomeScreen> {
           });
           return true;
         },
-        child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: getListDosen().length,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            itemBuilder: (context, index) {
-              final Dosen dosen = getListDosen()[index];
-              return ItemData(
-                dosen: dosen,
-                onDismissed: () => setState(
-                  () => getListDosen().removeAt(index),
-                ),
-                onCancel: () {},
-              );
-            }),
+        child: Consumer<DosenViewModel>(
+          builder: (context, vm, child) {
+            vm.getAllDosen();
+            return ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: vm.listDosen.length,
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    itemBuilder: (context, index) {
+                      final Dosen dosen = vm.listDosen[index];
+                      return ItemData(
+                        dosen: dosen,
+                      );
+                    });
+          },
+        ),
       ),
       floatingActionButton: AnimatedSlide(
         duration: const Duration(milliseconds: 300),
@@ -66,14 +79,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  List<Dosen> getListDosen() => List<Dosen>.generate(
-      10,
-      (index) => Dosen(
-          id: index,
-          dosenId: 'Dosen00$index',
-          name: 'Nama Dosen ${index + 1}',
-          rumpun: 'test1',
-          programStudy: 'test4',
-          email: 'e@mail.com'));
 }
