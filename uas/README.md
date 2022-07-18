@@ -21,6 +21,7 @@ Ini merupakan UAS Pemrograman Mobile soal **Genap**. Membuat CRUD data dosen.
 | ![start](<./screenshoots/start.png>)         | ![create](<./screenshoots/add.png>)          |
 | HomeScreen                                   | Dosen Form                                   |
 | ![created dosen](<./screenshoots/added_dosen.png>) | ![update](<./screenshoots/updated_dosen.png>) |
-| Created Dosen                                | Update Dosen                                    |
-| ![delete](<./screenshoots/deleted_dosen.png>)|                                                 |
+| Created Dosen                                | Update Dosen                                   |
+| ![delete](<./screenshoots/deleted_dosen.png>)|                                                |
+| Delete Dosen                                 |                                                |
 
